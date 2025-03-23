@@ -168,48 +168,47 @@ const options: OptionItem[] = [
     allows_heavy_waste: false,
   },
 ];
+const steps = [
+  {
+    id: "postcode",
+    label: "Postcode",
+    icon: <FiMapPin />,
+    status: "completed" as const,
+  },
+  {
+    id: "waste-type",
+    label: "Waste Type",
+    icon: <RiDeleteBin5Line />,
+    status: "completed" as const,
+  },
+  {
+    id: "select-skip",
+    label: "Select Skip",
+    icon: <FiTruck />,
+    status: "active" as const,
+  },
+  {
+    id: "permit-check",
+    label: "Permit Check",
+    icon: <MdOutlineShield />,
+    status: "upcoming" as const,
+  },
+  {
+    id: "choose-date",
+    label: "Choose Date",
+    icon: <FiCalendar />,
+    status: "upcoming" as const,
+  },
+  {
+    id: "payment",
+    label: "Payment",
+    icon: <FiCreditCard />,
+    status: "upcoming" as const,
+  },
+];
 function App() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const currentStep = 2;
-
-  const steps = [
-    {
-      id: "postcode",
-      label: "Postcode",
-      icon: <FiMapPin />,
-      status: "completed" as const,
-    },
-    {
-      id: "waste-type",
-      label: "Waste Type",
-      icon: <RiDeleteBin5Line />,
-      status: "completed" as const,
-    },
-    {
-      id: "select-skip",
-      label: "Select Skip",
-      icon: <FiTruck />,
-      status: "active" as const,
-    },
-    {
-      id: "permit-check",
-      label: "Permit Check",
-      icon: <MdOutlineShield />,
-      status: "upcoming" as const,
-    },
-    {
-      id: "choose-date",
-      label: "Choose Date",
-      icon: <FiCalendar />,
-      status: "upcoming" as const,
-    },
-    {
-      id: "payment",
-      label: "Payment",
-      icon: <FiCreditCard />,
-      status: "upcoming" as const,
-    },
-  ];
   const selectedOption =
     options.find((option) => option.id === selectedId) || null;
   const handleSelect = (id: number) => {
