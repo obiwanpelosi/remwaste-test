@@ -16,7 +16,7 @@ function SkipOptionCard({ option, isSelected, onSelect }: OptionCardProps) {
     <article
       className={`group cursor-pointer flex overflow-hidden flex-col items-center px-5 py-6 mx-auto w-full rounded-3xl max-md:mt-10 hover:bg-neutral-800 transition-all duration-300 ${
         isSelected
-          ? "bg-neutral-800 shadow-[0px_0px_24px_10px_rgba(239,165,6,1)]"
+          ? "bg-neutral-800 shadow-[0px_0px_20px_5px_rgba(239,165,6,1)]"
           : "bg-neutral-950"
       }`}
       id={`${isSelected ? "isSelected" : ""}`}
