@@ -31,7 +31,9 @@ export const SummarySection = ({
       <div className="max-w-4xl mx-auto px-6 py-4 flex flex-col gap-4 md:flex-row items-center justify-between">
         <div className="flex items-center space-x-6">
           <div>
-            <p className="text-gray-400 text-sm">Selected Option</p>
+            <p className="text-gray-400 text-sm hidden lg:block">
+              Selected Option
+            </p>
             <p className="text-gray-100 font-bold text-lg">
               {selectedOption
                 ? `${selectedOption.size} Yard Skip (#${selectedOption.id})`
@@ -51,7 +53,7 @@ export const SummarySection = ({
           <div className="border-l border-gray-700 h-12 mx-2"></div>
 
           <div>
-            <p className="text-gray-400 text-sm">Total Price</p>
+            <p className="text-gray-400 text-sm hidden lg:block">Total Price</p>
             <p className="text-amber-400 font-bold">
               {selectedOption ? `£${totalPrice.toFixed(2)}` : ""}
             </p>
@@ -60,7 +62,7 @@ export const SummarySection = ({
 
         <button
           onClick={onContinue}
-          className="bg-amber-400 hover:bg-amber-400/80 text-white px-4 py-2 rounded-md flex items-center transition-colors duration-200"
+          className="bg-amber-400 hover:bg-amber-400/80 text-white px-4 py-2 rounded-md flex items-center justify-center transition-colors duration-200 w-full lg:w-auto"
         >
           <span className="mr-2">Continue</span>
           <FiArrowRight />

@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { SummarySection } from "./components/Summary";
 import SkipOptionCard from "./components/skip-option-card";
+import { FiCalendar, FiCreditCard, FiMapPin, FiTruck } from "react-icons/fi";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { MdOutlineShield } from "react-icons/md";
+import ProgressNavbar from "./components/progress-navbar";
 
 export type OptionItem = {
   id: number;
@@ -166,6 +170,46 @@ const options: OptionItem[] = [
 ];
 function App() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [currentStep, setCurrentStep] = useState(2);
+
+  const steps = [
+    {
+      id: "postcode",
+      label: "Postcode",
+      icon: <FiMapPin />,
+      status: "completed" as const,
+    },
+    {
+      id: "waste-type",
+      label: "Waste Type",
+      icon: <RiDeleteBin5Line />,
+      status: "completed" as const,
+    },
+    {
+      id: "select-skip",
+      label: "Select Skip",
+      icon: <FiTruck />,
+      status: "active" as const,
+    },
+    {
+      id: "permit-check",
+      label: "Permit Check",
+      icon: <MdOutlineShield />,
+      status: "upcoming" as const,
+    },
+    {
+      id: "choose-date",
+      label: "Choose Date",
+      icon: <FiCalendar />,
+      status: "upcoming" as const,
+    },
+    {
+      id: "payment",
+      label: "Payment",
+      icon: <FiCreditCard />,
+      status: "upcoming" as const,
+    },
+  ];
   const selectedOption =
     options.find((option) => option.id === selectedId) || null;
   const handleSelect = (id: number) => {
@@ -181,12 +225,18 @@ function App() {
     }
   }, [selectedId]);
   return (
-    <section className="flex overflow-hidden flex-col justify-center items-center px-20 py-16 bg-neutral-900 max-md:px-5">
+    <section className="flex overflow-hidden flex-col justify-center items-center px-20  pt-6 pb-16 bg-neutral-900 max-md:px-5">
+      <ProgressNavbar
+        steps={steps}
+        currentStepIndex={currentStep}
+        className="mb-8"
+      />
+
       <div className="flex flex-col w-full max-w-[1112px] max-md:max-w-full">
-        <h1 className="self-center text-3xl font-bold leading-relaxed text-center text-amber-400">
+        <h1 className="self-center text-2xl  lg:text-3xl font-bold leading-relaxed text-center text-amber-400">
           Choose your skip size
         </h1>
-        <p className="self-center mt-5 text-2xl leading-loose text-center text-zinc-300 max-md:max-w-full">
+        <p className="self-center mt-5 text-xl lg:text-2xl leading-loose text-center text-zinc-300 max-md:max-w-full">
           Select the skip size that best suits your need, you can cancel anytime
         </p>
 
