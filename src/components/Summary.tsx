@@ -62,7 +62,7 @@ export const SummarySection = ({
 
         <button
           onClick={onContinue}
-          className="bg-amber-400 hover:bg-amber-400/80 text-white px-4 py-2 rounded-md flex items-center justify-center transition-colors duration-200 w-full lg:w-auto"
+          className="bg-amber-400 hover:bg-amber-400/80 text-black font-medium px-4 py-2 rounded-md flex items-center justify-center transition-colors duration-200 w-full lg:w-auto"
         >
           <span className="mr-2">Continue</span>
           <FiArrowRight />
