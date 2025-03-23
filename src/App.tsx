@@ -170,7 +170,7 @@ const options: OptionItem[] = [
 ];
 function App() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const [currentStep, setCurrentStep] = useState(2);
+  const currentStep = 2;
 
   const steps = [
     {
