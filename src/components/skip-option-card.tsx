@@ -14,13 +14,18 @@ function SkipOptionCard({ option, isSelected, onSelect }: OptionCardProps) {
 
   return (
     <article
-      className={`group cursor-pointer flex overflow-hidden flex-col items-center px-5 py-6 mx-auto w-full rounded-3xl max-md:mt-10 hover:bg-neutral-800 transition-all duration-300 ${
+      className={`group flex overflow-hidden flex-col items-center px-5 py-6 mx-auto w-full rounded-3xl max-md:mt-10 hover:bg-neutral-800 transition-all duration-300 ${
         isSelected
           ? "bg-neutral-800 shadow-[0px_0px_20px_5px_rgba(239,165,6,1)]"
           : "bg-neutral-950"
+      } ${
+        option.forbidden ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
       }`}
       id={`${isSelected ? "isSelected" : ""}`}
-      onClick={() => onSelect(option.id)}
+      onClick={() => {
+        if (option.forbidden) return;
+        onSelect(option.id);
+      }}
     >
       <header className="flex gap-10 justify-between items-start self-stretch w-full">
         <div className="w-full">
@@ -77,7 +82,10 @@ function SkipOptionCard({ option, isSelected, onSelect }: OptionCardProps) {
           onSelect(option.id);
         }}
         className={`gap-2 self-stretch px-1.5 py-2 mt-8 max-w-full text-sm font-semibold leading-snug rounded-2xl min-h-[34px] group-hover:bg-white group-hover:text-black transition-all duration-300 
-          ${isSelected ? "bg-white text-black" : "bg-[#2F2F2F] text-white"}`}
+          ${isSelected ? "bg-white text-black" : "bg-[#2F2F2F] text-white"} ${
+          option.forbidden ? "cursor-not-allowed" : "cursor-pointer"
+        }`}
+        disabled={option.forbidden}
         aria-selected={isSelected}
       >
         {isSelected ? "Selected " : "Select this skip"}

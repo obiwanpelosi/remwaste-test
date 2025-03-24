@@ -33,7 +33,7 @@ const options: OptionItem[] = [
     vat: 20,
     postcode: "NR32",
     area: null,
-    forbidden: false,
+    forbidden: true,
     created_at: "2021-04-06T17:04:42",
     updated_at: "2024-04-02T09:22:38",
     allowed_on_road: true,
